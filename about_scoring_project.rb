@@ -31,6 +31,36 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 def score(dice)
   # You need to write this method
+  if (dice.size>5)
+    fail "Too much!"
+  end
+  
+  point = 0
+  
+  (1..6).each do |x|
+    count = dice.count(x)
+    if (count>=3)
+      if (x==1)
+        point += 1000
+        point += 100*(count-3)
+      else
+        point += 100*x
+      end
+      
+      if (x==5)
+        point += 50*(count-3)
+      end
+      
+    else
+      if (x==1)
+        point += 100*(count)
+      elsif (x==5)
+        point += 50*(count)
+      end
+    end
+  end
+  
+  return point
 end
 
 class AboutScoringProject < EdgeCase::Koan
