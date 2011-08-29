@@ -1,24 +1,21 @@
-  class Dog7
+  class Dog
     attr_reader :name
 
-    def initialize(initial_name)
-      @name = initial_name
+    def initialize(name)
+      @name = name
     end
 
-    def get_self
-      self
-    end
-
-    def to_s
-      
-    end
-
-    def inspect
-      "<Dog named '#{name}'>"
+    def bark
+      "WOOF"
     end
   end
   
-fido=Dog7.new("Fido")
-fidos_self = fido.get_self
+  class GreatDane < Dog
+    def growl
+      super.bark + ", GROWL"
+    end
+  end
+  
+george = GreatDane.new("George")
 
-puts fidos_self
+george.growl
