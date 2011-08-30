@@ -1,21 +1,17 @@
-  class Dog
-    attr_reader :name
-
-    def initialize(name)
-      @name = name
+  module Jims
+    class Dog
+      def identify
+        :jims_dog
+      end
     end
+  end
 
-    def bark
-      "WOOF"
+  module Joes
+    class Dog
+      def identify
+        :joes_dog
+      end
     end
   end
   
-  class GreatDane < Dog
-    def growl
-      super.bark + ", GROWL"
-    end
-  end
-  
-george = GreatDane.new("George")
-
-george.growl
+puts Jims.constants
