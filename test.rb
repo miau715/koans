@@ -1,17 +1,35 @@
-  module Jims
-    class Dog
-      def identify
-        :jims_dog
-      end
-    end
+class Proxy
+  def initialize(target_object)
+    @object = target_object
+    # ADD MORE CODE HERE
+    
+    
+    
+    
   end
 
-  module Joes
-    class Dog
-      def identify
-        :joes_dog
-      end
+  # WRITE CODE HERE
+  
+end
+
+class Television
+  attr_accessor :channel
+  
+  def power
+    if @power == :on
+      @power = :off
+    else
+      @power = :on
     end
   end
   
-puts Jims.constants
+  def on?
+    @power == :on
+  end
+  
+  
+end
+
+tv = Proxy.new(Television.new)
+
+puts tv
