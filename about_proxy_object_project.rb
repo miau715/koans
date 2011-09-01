@@ -12,16 +12,32 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # missing handler and any other supporting methods.  The specification
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
-class Proxy
+class Proxy 
   def initialize(target_object)
     @object = target_object
+    @record = []
     # ADD MORE CODE HERE
-    
+
     
   end
-
   # WRITE CODE HERE
-  attr_accessor :channel
+  def method_missing(method_name, *args, &block)
+    @record << method_name
+    @call = method_name
+    @object.send(method_name, *args)
+    
+  end
+  def messages
+    @record
+  end
+  def called?(called_method)
+    @call == called_method
+  end
+  def number_of_times_called(method)
+    @record.count(method)
+  end
+  
+  
 end
 
 # The proxy object should pass the following Koan:

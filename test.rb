@@ -1,35 +1,11 @@
-class Proxy
-  def initialize(target_object)
-    @object = target_object
-    # ADD MORE CODE HERE
-    
-    
-    
-    
-  end
+  class CanBeTreatedAsString
+    def to_s
+      "string-like"
+    end
 
-  # WRITE CODE HERE
-  
-end
-
-class Television
-  attr_accessor :channel
-  
-  def power
-    if @power == :on
-      @power = :off
-    else
-      @power = :on
+    def to_str
+      to_s
     end
   end
   
-  def on?
-    @power == :on
-  end
-  
-  
-end
-
-tv = Proxy.new(Television.new)
-
-puts tv
+puts File.exist?(CanBeTreatedAsString.new)
